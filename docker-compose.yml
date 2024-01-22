@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  masstransit.rabbitmq:
+    image: masstransit/rabbitmq
+
+  redis-cache:
+    image: redis:latest
+
+  mtsample.webapi:
+    image: ${DOCKER_REGISTRY-}mtsamplewebapi
+    build:
+      context: .
+      dockerfile: MTSample.WebApi/Dockerfile
+    depends_on:
+    - mtsample.backgroundworker-1
+    - mtsample.backgroundworker-2
+    - mtsample.backgroundworker-3
+    - masstransit.rabbitmq
+
+  mtsample.backgroundworker-1:
+    image: ${DOCKER_REGISTRY-}mtsamplebackgroundworker
+    build:
+      context: .
+      dockerfile: MTSample.BackgroundWorker/Dockerfile
+    depends_on:
+      - masstransit.rabbitmq
+      
+  mtsample.backgroundworker-2:
+    image: ${DOCKER_REGISTRY-}mtsamplebackgroundworker
+    build:
+      context: .
+      dockerfile: MTSample.BackgroundWorker/Dockerfile
+    depends_on:
+      - masstransit.rabbitmq
+
+  mtsample.backgroundworker-3:
+    image: ${DOCKER_REGISTRY-}mtsamplebackgroundworker
+    build:
+      context: .
+      dockerfile: MTSample.BackgroundWorker/Dockerfile
+    depends_on:
+      - masstransit.rabbitmq
