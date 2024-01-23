@@ -10,7 +10,7 @@ services:
     image: redis:latest
 
   mtsample.webapi:
-    image: ghcr.io/espiya/mtsample.webapi:dev
+    image: ghcr.io/espiya/mtsample.webapi:latest
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
@@ -22,7 +22,7 @@ services:
     - mtsample.backgroundworker
 
   mtsample.backgroundworker:
-    image: ghcr.io/espiya/mtsample.backgroundworker:dev
+    image: ghcr.io/espiya/mtsample.backgroundworker:latest
     environment:
       - DOTNET_ENVIRONMENT=Development
     deploy:

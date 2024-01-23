@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: mtsample-backgroundworker
-        image: ghcr.io/espiya/mtsample.backgroundworker:dev
+        image: ghcr.io/espiya/mtsample.backgroundworker:latest

@@ -26,11 +26,11 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build and Push Docker Image
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@v5
       with:
         context: .
         push: true
         platforms: linux/amd64
         builder: ${{ steps.buildx.outputs.name }}
-        tags: ghcr.io/espiya/mtsample.backgroundworker:dev
+        tags: ghcr.io/espiya/mtsample.backgroundworker:latest
         file: MTSample.BackgroundWorker/Dockerfile
