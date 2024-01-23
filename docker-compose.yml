@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  masstransit.rabbitmq:
+  mtrabbitmq:
     image: masstransit/rabbitmq
 
   redis-cache:
@@ -16,7 +16,7 @@ services:
     - mtsample.backgroundworker-1
     - mtsample.backgroundworker-2
     - mtsample.backgroundworker-3
-    - masstransit.rabbitmq
+    - mtrabbitmq
 
   mtsample.backgroundworker-1:
     image: ${DOCKER_REGISTRY-}mtsamplebackgroundworker
@@ -24,7 +24,7 @@ services:
       context: .
       dockerfile: MTSample.BackgroundWorker/Dockerfile
     depends_on:
-      - masstransit.rabbitmq
+      - mtrabbitmq
       
   mtsample.backgroundworker-2:
     image: ${DOCKER_REGISTRY-}mtsamplebackgroundworker
@@ -32,7 +32,7 @@ services:
       context: .
       dockerfile: MTSample.BackgroundWorker/Dockerfile
     depends_on:
-      - masstransit.rabbitmq
+      - mtrabbitmq
 
   mtsample.backgroundworker-3:
     image: ${DOCKER_REGISTRY-}mtsamplebackgroundworker
@@ -40,4 +40,4 @@ services:
       context: .
       dockerfile: MTSample.BackgroundWorker/Dockerfile
     depends_on:
-      - masstransit.rabbitmq
+      - mtrabbitmq
