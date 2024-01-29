@@ -12,9 +12,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMassTransit(x =>
 {
+    var mtConfig = builder.Configuration.GetSection("MassTransit");
+
     x.SetKebabCaseEndpointNameFormatter();
 
-    x.SetRedisSagaRepositoryProvider("redis-cache");
+    x.SetRedisSagaRepositoryProvider(mtConfig.GetValue<string>("Redis:Configuration"));
 
     var entryAssembly = Assembly.GetEntryAssembly();
 
@@ -25,9 +27,9 @@ builder.Services.AddMassTransit(x =>
 
     x.UsingRabbitMq((context, cfg) =>
     {
-        cfg.Host("mtrabbitmq", "/", h => {
-            h.Username("guest");
-            h.Password("guest");
+        cfg.Host(mtConfig.GetValue<string>("RabbitMQ:Host"), mtConfig.GetValue<string>("RabbitMQ:VirtualHost"), h => {
+            h.Username(mtConfig.GetValue<string>("RabbitMQ:Username"));
+            h.Password(mtConfig.GetValue<string>("RabbitMQ:Password"));
         });
 
         cfg.ConfigureEndpoints(context);

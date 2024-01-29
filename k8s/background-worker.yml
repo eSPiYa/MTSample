@@ -15,3 +15,6 @@ spec:
       containers:
       - name: mtsample-backgroundworker
         image: ghcr.io/espiya/mtsample.backgroundworker:latest
+        envFrom:
+        - configMapRef:
+            name: mtsample-configmap

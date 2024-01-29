@@ -12,6 +12,8 @@ services:
     build:
       context: .
       dockerfile: MTSample.WebApi/Dockerfile
+    environment:
+      - RunningFrom=docker-compose
     depends_on:
     - mtsample.backgroundworker-1
     - mtsample.backgroundworker-2

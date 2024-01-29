@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mtsample-configmap
+data:
+  MassTransit.Transport: RabbitMQ
+  MassTransit.SagaProvider: Redis
+  MassTransit.RabbitMQ.Host: mtrabbitmq
+  MassTransit.RabbitMQ.VirtualHost: /
+  MassTransit.RabbitMQ.Username: guest
+  MassTransit.RabbitMQ.Password: guest
+  MassTransit.Redis.Configuration: redis-cache

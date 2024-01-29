@@ -15,6 +15,9 @@ spec:
       containers:
       - name: mtsample-webapi
         image: ghcr.io/espiya/mtsample.webapi:latest
+        envFrom:
+        - configMapRef:
+            name: mtsample-configmap
         env:
         - name: ASPNETCORE_HTTP_PORTS
           value: "8080"

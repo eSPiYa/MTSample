@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{CC4FE11C-261E-4283-A5E5-ACEE7AC84891}"
 	ProjectSection(SolutionItems) = preProject
 		k8s\background-worker.yml = k8s\background-worker.yml
+		k8s\configmap.yml = k8s\configmap.yml
 		k8s\rabbitmq.yml = k8s\rabbitmq.yml
 		k8s\redis-cache.yml = k8s\redis-cache.yml
 		k8s\web-api.yml = k8s\web-api.yml
