@@ -35,6 +35,7 @@ metadata:
 spec:
   selector:
     app: mtsample-webapi
+  type: LoadBalancer
   ports:
   - name: http
     port: 8080
