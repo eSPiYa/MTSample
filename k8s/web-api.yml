@@ -15,6 +15,7 @@ spec:
       containers:
       - name: mtsample-webapi
         image: ghcr.io/espiya/mtsample.webapi:latest
+        imagePullPolicy: Always
         envFrom:
         - configMapRef:
             name: mtsample-configmap

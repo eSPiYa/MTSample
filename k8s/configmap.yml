@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: mtsample-configmap
 data:
+  RunningFrom: Kubernetes
   MassTransit.Transport: RabbitMQ
   MassTransit.SagaProvider: Redis
   MassTransit.RabbitMQ.Host: mtrabbitmq
